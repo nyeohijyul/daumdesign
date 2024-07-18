@@ -220,7 +220,7 @@
       <div class="b-example-divider"></div>
       <hr style="color: white;">
       <div id="diiv">
-        <input type="text" id="search" required onfocus="document.getElementById('searching').innerHTML = '검색할 내용을 적은 후, <br>돋보기를 클릭해 주세요.';" onblur="document.getElementById('searching').innerHTML = '이곳을 눌러 검색합니다.';">
+        <input type="text" id="search" required onkeydown="if(event.key==='enter'){var searchData = document.getElementById('search').value; window.location.href=`https://search.daum.net/search?w=tot&DA=YZR&t__nil_searchbox=btn&q=${searchData}`}" onfocus="document.getElementById('searching').innerHTML = '검색할 내용을 적은 후, <br>돋보기를 클릭해 주세요.';" onblur="document.getElementById('searching').innerHTML = '이곳을 눌러 검색합니다.';">
         <label for="search" style="font-size: 3em;" id="searching">이곳을 눌러 검색합니다.</label>
         <span></span>
         <button type="button" onclick="var searchData = document.getElementById('search').value; window.location.href=`https://search.daum.net/search?w=tot&DA=YZR&t__nil_searchbox=btn&q=${searchData}`"><svg xmlns="http://www.w3.org/2000/svg" width="3em" height="3em" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
