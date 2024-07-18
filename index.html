@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DAUM</title>
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/masonry/">    
+    <link href="bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+        /* p {
+            border: 2px solid rebeccapurple;
+            padding: 5em;
+        }
+        li {
+            border: 2px solid blue;
+            padding: 5em;
+            display: inline-block;
+        }
+        p {
+            display: flex;
+            list-style: none;
+        } */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+          }
+
+          #diiv {
+            position: relative;
+          }
+
+          input, label, span {
+            position: relative;
+            margin-left: 50px;
+            margin-top: 100px;
+          }
+
+          input {
+            font-size: 2em;
+            font-weight: bolder;
+            color: #222222;
+            width: 85%;
+            border: none;
+            /* border-bottom: solid #aaaaaa 0.2em; */
+            padding-bottom: 0px;
+            padding-left: 10px;
+            position: relative;
+            background: none;
+            z-index: 5;
+          }
+
+          input::placeholder { color: #aaaaaa; }
+          input:focus { outline: none; }
+
+          span {
+            display: block;
+            position: absolute;
+            bottom: 0;
+            left: 0%;  /* right로만 바꿔주면 오 - 왼 */
+            background-color: #666;
+            width: 0;
+            height: 2px;
+            border-radius: 2px;
+            transition: 0.5s;
+          }
+
+          label {
+            position: absolute;
+            color: #aaa;
+            left: 10px;
+            font-size: 2em;
+            bottom: 8px;
+            transition: all .2s;
+          }
+
+          input:focus ~ label, input:valid ~ label {
+            font-size: 3em;
+            bottom: 40px;
+            color: #666;
+            font-weight: bold;
+          }
+
+          input:focus ~ span, input:valid ~ span {
+            width: 85%;
+          }
+
+
+          
+        .form-control-dark {
+            border-color: var(--bs-gray);
+        }
+        .form-control-dark:focus {
+            border-color: #fff;
+            box-shadow: 0 0 0 .25rem rgba(255, 255, 255, .25);
+        }
+
+        .text-small {
+            font-size: 85%;
+        }
+
+        .dropdown-toggle:not(:focus) {
+            outline: 0;
+        }
+        .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+      .b-example-divider {
+        width: 100%;
+        height: 3rem;
+        background-color: rgba(0, 0, 0, .1);
+        border: solid rgba(0, 0, 0, .15);
+        border-width: 1px 0;
+        box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+      }
+
+      .b-example-vr {
+        flex-shrink: 0;
+        width: 1.5rem;
+        height: 100vh;
+      }
+
+      .bi {
+        vertical-align: -.125em;
+        fill: currentColor;
+      }
+
+      .nav-scroller {
+        position: relative;
+        z-index: 2;
+        height: 2.75rem;
+        overflow-y: hidden;
+      }
+
+      .nav-scroller .nav {
+        display: flex;
+        flex-wrap: nowrap;
+        padding-bottom: 1rem;
+        margin-top: -1px;
+        overflow-x: auto;
+        text-align: center;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .btn-bd-primary {
+        --bd-violet-bg: #712cf9;
+        --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
+
+        --bs-btn-font-weight: 600;
+        --bs-btn-color: var(--bs-white);
+        --bs-btn-bg: var(--bd-violet-bg);
+        --bs-btn-border-color: var(--bd-violet-bg);
+        --bs-btn-hover-color: var(--bs-white);
+        --bs-btn-hover-bg: #6528e0;
+        --bs-btn-hover-border-color: #6528e0;
+        --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+        --bs-btn-active-color: var(--bs-btn-hover-color);
+        --bs-btn-active-bg: #5a23c8;
+        --bs-btn-active-border-color: #5a23c8;
+      }
+
+      .bd-mode-toggle {
+        z-index: 1500;
+      }
+
+      .bd-mode-toggle .dropdown-menu .active .bi {
+        display: block !important;
+      }
+      /* .bd-placeholder-img {
+        background-image: url('news.jpg');
+        background-size: cover;
+        다른 스타일링 속성 추가 
+      } */
+
+      /* 600px 이상일 때 */
+      @media screen and (min-width: 400px) {
+          #searching {
+            font-size: 2em !important;
+          }
+          #search {
+            top: 55px;
+          }
+      }
+
+      /* 900px 이상일 때 */
+      @media screen and (min-width: 800px) {
+          #searching {
+            font-size: 3em !important;
+          }
+          #search {
+            top: 0px;
+          }
+      }
+
+    </style>
+    
+    <link href="headers.css" rel="stylesheet">
+</head>
+<body>
+  <!--헤더-->
+  <div class="container">
+      <header class="d-flex justify-content-left py-3">
+        <ul class="nav nav-pills">
+          <li><img src="https://t1.daumcdn.net/daumtop_deco/images/pctop/2023/logo_daum.png" onclick="document.getElementById('isLogined').innerHTML = '로그인되어 있어요'; document.getElementById('isUser').innerHTML = `${userName}님 안녕하세요.` " width="90em" height="105em" class="logo_daum" alt="Daum"></li>
+        </ul>
+      </header>
+      <div class="b-example-divider"></div>
+      <hr style="color: white;">
+      <div id="diiv">
+        <input type="text" id="search" required onfocus="document.getElementById('searching').innerHTML = '검색할 내용을 적은 후, <br>돋보기를 클릭해 주세요.';" onblur="document.getElementById('searching').innerHTML = '이곳을 눌러 검색합니다.';">
+        <label for="search" style="font-size: 3em;" id="searching">이곳을 눌러 검색합니다.</label>
+        <span></span>
+        <button type="button" onclick="var searchData = document.getElementById('search').value; window.location.href=`https://search.daum.net/search?w=tot&DA=YZR&t__nil_searchbox=btn&q=${searchData}`"><svg xmlns="http://www.w3.org/2000/svg" width="3em" height="3em" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+          <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+        </svg></button>
+      </div>
+      <hr style="color: white;">
+<div class="b-example-divider"></div>
+<hr style="color: white;">
+      <ul class="nav nav-pills d-flex justify-content-left py-3">
+        <li class="nav-item" style="--bs-nav-pills-link-active-bg: #6387FF; font-weight: bold; font-size: 3em;"><a href="https://focus.daum.net/daum/pc/sitemap.html" class="nav-link active" aria-current="page">모든 서비스 바로가기</a></li>
+        <li class="nav-item"><a href="https://news.daum.net/" class="nav-link" style="border: 0.1em solid; border-radius: 15%; --bs-nav-link-color: #6387FF; font-size: 3em; --bs-nav-link-hover-color: #FA6C7B; font-weight: bold;">뉴스 바로가기</a></li>
+        <li class="nav-item"><a href="https://accounts.kakao.com/login/?continue=https%3A%2F%2Fmail.daum.net#login" class="nav-link" style="border: 0.1em solid; border-radius: 15%; --bs-nav-link-color: #6387FF; font-size: 3em; --bs-nav-link-hover-color: #FA6C7B; font-weight: bold;">메일함 바로가기</a></li>
+      </ul>
+      <hr style="color: white;">
+      <ul class="nav nav-pills d-flex justify-content-left py-3">
+        <li class="nav-item" style="--bs-nav-pills-link-active-bg: #fee500; font-weight: bold; font-size: 3em;"><a href="https://accounts.kakao.com/login/?continue=https%3A%2F%2Fwww.daum.net#login" id="isLogined" class="nav-link active" style="color: black;" aria-current="page">카카오 계정을 통해 로그인하세요.</a></li>
+        <li class="nav-item" style="--bs-nav-link-color: #000;"><a href="https://accounts.kakao.com/login/?continue=https%3A%2F%2Fwww.daum.net#login" class="nav-link" id="isUser" style="border: 0.1em solid; border-radius: 15%; font-size: 3em; --bs-nav-link-hover-color: #e9cf88; font-weight: bold;">로그인하기</a></li>
+      </ul>
+  </div>
+
+  <div class="b-example-divider"></div>
+
+  <!--본문-->
+  <main class="container py-5">
+    <div class="row" data-masonry='{"percentPosition": true }' style="width: 100%;">
+      <div class="col-sm-6 col-lg-4 mb-4">
+        <div class="card"onclick="window.location.href='https://v.daum.net/v/20240717114318967'">
+          <img src="https://img2.daumcdn.net/thumb/R658x0.q70/?fname=https://t1.daumcdn.net/news/202407/17/imbc/20240717120108460lhlq.jpg" width="100%">
+          <div class="card-body">
+            <p class="card-title" style="font-size: 2em; text-align: left;">검찰, 'SM엔터 시세조종' 카카오 김범수 구속영장 청구</p>
+            <p class="card-text" style="font-size: 1.5em; text-align: right;">MBC</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-4 mb-4">
+        <!-- 
+        <div class="card p-3">
+          <figure class="p-3 mb-0">
+            <blockquote class="blockquote">
+              <p>A well-known quote, contained in a blockquote element.</p>
+            </blockquote>
+            <figcaption class="blockquote-footer mb-0 text-body-secondary">
+              Someone famous in <cite title="Source Title">Source Title</cite>
+            </figcaption>
+          </figure>
+        </div>
+      -->
+        <div class="card" onclick="window.location.href='https://v.daum.net/v/20240718080319480'">
+          <img src="https://img1.daumcdn.net/thumb/R658x0.q70/?fname=https://t1.daumcdn.net/news/202407/18/kukminilbo/20240718095020557wqms.jpg" width="100%">
+          <div class="card-body">
+            <p class="card-title" style="font-size: 2em; text-align: left;">바이든 소개후 45분 무대 ‘텅’…뒤늦게 “코로나 걸렸다”</p>
+            <p class="card-text" style="font-size: 1.5em; text-align: right;">국민일보</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-4 mb-4">
+        <!--<div class="card">
+          <svg class="bd-placeholder-img card-img-top" width="100%" height="200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"/><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text></svg>
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+            <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+          </div>
+        </div>-->
+        <div class="card">
+          <img src="news.jpg" width="100%">
+          <div class="card-body">
+            <p class="card-title" style="font-size: 2em; text-align: left;">[속보] 검찰, 'SM 시세 조종 의혹' 카카오 김범수 구속영장 청구</p>
+            <p class="card-text" style="font-size: 1.5em; text-align: right;">실시간 주요 뉴스</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-4 mb-4">
+        <!--<div class="card text-bg-primary text-center p-3" style="--bs-primary-rgb: 99, 135, 255 !important;">
+          <figure class="mb-0">
+            <blockquote class="blockquote">
+              <p>A well-known quote, contained in a blockquote element.</p>
+            </blockquote>
+            <figcaption class="blockquote-footer mb-0 text-white">
+              Someone famous in <cite title="Source Title">Source Title</cite>
+            </figcaption>
+          </figure>
+        </div>-->
+        <div class="card">
+          <img src="news.jpg" width="100%">
+          <div class="card-body">
+            <p class="card-title" style="font-size: 2em; text-align: left;">[속보] 검찰, 'SM 시세 조종 의혹' 카카오 김범수 구속영장 청구</p>
+            <p class="card-text" style="font-size: 1.5em; text-align: right;">실시간 주요 뉴스</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-4 mb-4">
+        <!--<div class="card text-center">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">This card has a regular title and short paragraph of text below it.</p>
+            <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+          </div>
+        </div>-->
+        <div class="card">
+          <img src="news.jpg" width="100%">
+          <div class="card-body">
+            <p class="card-title" style="font-size: 2em; text-align: left;">[속보] 검찰, 'SM 시세 조종 의혹' 카카오 김범수 구속영장 청구</p>
+            <p class="card-text" style="font-size: 1.5em; text-align: right;">실시간 주요 뉴스</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-4 mb-4">
+        <!--<div class="card">
+          <svg class="bd-placeholder-img card-img" width="100%" height="260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Card image" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"/><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Card image</text></svg>
+        </div>-->
+        <div class="card">
+          <img src="news.jpg" width="100%">
+          <div class="card-body">
+            <p class="card-title" style="font-size: 2em; text-align: left;">[속보] 검찰, 'SM 시세 조종 의혹' 카카오 김범수 구속영장 청구</p>
+            <p class="card-text" style="font-size: 1.5em; text-align: right;">실시간 주요 뉴스</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-4 mb-4">
+        <!--<div class="card p-3 text-end">
+          <figure class="mb-0">
+            <blockquote class="blockquote">
+              <p>A well-known quote, contained in a blockquote element.</p>
+            </blockquote>
+            <figcaption class="blockquote-footer mb-0 text-body-secondary">
+              Someone famous in <cite title="Source Title">Source Title</cite>
+            </figcaption>
+          </figure>
+        </div>-->
+        <div class="card">
+          <img src="news.jpg" width="100%">
+          <div class="card-body">
+            <p class="card-title" style="font-size: 2em; text-align: left;">[속보] 검찰, 'SM 시세 조종 의혹' 카카오 김범수 구속영장 청구</p>
+            <p class="card-text" style="font-size: 1.5em; text-align: right;">실시간 주요 뉴스</p>
+          </div>  
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-4 mb-4">
+        <!--<div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">This is another card with title and supporting text below. This card has some additional content to make it slightly taller overall.</p>
+            <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+          </div>
+        </div>
+      -->
+        <div class="card">
+          <img src="news.jpg" width="100%">
+          <div class="card-body">
+            <p class="card-title" style="font-size: 2em; text-align: left;">[속보] 검찰, 'SM 시세 조종 의혹' 카카오 김범수 구속영장 청구</p>
+            <p class="card-text" style="font-size: 1.5em; text-align: right;">실시간 주요 뉴스</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+    <!--푸터-->
+    <div class="container">
+        <footer class="py-3 my-4">
+          <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Home</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Features</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Pricing</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">FAQs</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">About</a></li>
+          </ul>
+          <p class="text-center text-body-secondary">출처: <a href="https://naver.com" class="nav-link active" style="display: inline;">다음</a></p>
+        </footer>
+    </div>
+  <script>
+    var userName = "이용자";
+
+    
+
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <script async src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous"></script>
+</body>
+</html>
