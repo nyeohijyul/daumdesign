@@ -68,7 +68,7 @@
 
           label {
             position: absolute;
-            color: #aaa;
+            color: #999;
             left: 10px;
             font-size: 2em;
             bottom: 8px;
@@ -221,7 +221,7 @@
       <hr style="color: white;">
       <div id="diiv">
         <input type="text" id="search" required onkeydown="if(event.key==='enter'){var searchData = document.getElementById('search').value; window.location.href=`https://search.daum.net/search?w=tot&DA=YZR&t__nil_searchbox=btn&q=${searchData}`}" onfocus="document.getElementById('searching').innerHTML = '검색할 내용을 적은 후, <br>돋보기를 클릭해 주세요.';" onblur="document.getElementById('searching').innerHTML = '이곳을 눌러 검색합니다.';">
-        <label for="search" style="font-size: 3em; color: #fa9999 !important;" id="searching">이곳을 눌러 검색합니다.</label>
+        <label for="search" style="font-size: 3em;" id="searching">이곳을 눌러 검색합니다.</label>
         <span></span>
         <button type="button" onclick="var searchData = document.getElementById('search').value; window.location.href=`https://search.daum.net/search?w=tot&DA=YZR&t__nil_searchbox=btn&q=${searchData}`"><svg xmlns="http://www.w3.org/2000/svg" width="3em" height="3em" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
           <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
@@ -232,7 +232,7 @@
 <hr style="color: white;">
       <ul class="nav nav-pills d-flex justify-content-left py-3">
         <li class="nav-item" style="--bs-nav-pills-link-active-bg: #6387FF; font-weight: bold; font-size: 3em;"><a href="https://focus.daum.net/daum/pc/sitemap.html" class="nav-link active" aria-current="page">모든 서비스 바로가기</a></li>
-        <li class="nav-item"><a href="https://news.daum.net/" class="nav-link" style="border: 0.1em solid; border-radius: 15%; --bs-nav-link-color: #6387FF; font-size: 3em; --bs-nav-link-hover-color: #FA6C7B; font-weight: bold;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-newspaper" viewBox="0 0 16 16">
+        <li class="nav-item"><a href="https://news.daum.net/" class="nav-link" style="border: 0.1em solid; border-radius: 15%; --bs-nav-link-color: #6387FF; font-size: 3em; --bs-nav-link-hover-color: #FA6C7B; font-weight: bold;"><svg xmlns="http://www.w3.org/2000/svg" width="3em" height="3em" fill="currentColor" class="bi bi-newspaper" viewBox="0 0 16 16">
   <path d="M0 2.5A1.5 1.5 0 0 1 1.5 1h11A1.5 1.5 0 0 1 14 2.5v10.528c0 .3-.05.654-.238.972h.738a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 1 1 0v9a1.5 1.5 0 0 1-1.5 1.5H1.497A1.497 1.497 0 0 1 0 13.5zM12 14c.37 0 .654-.211.853-.441.092-.106.147-.279.147-.531V2.5a.5.5 0 0 0-.5-.5h-11a.5.5 0 0 0-.5.5v11c0 .278.223.5.497.5z"/>
   <path d="M2 3h10v2H2zm0 3h4v3H2zm0 4h4v1H2zm0 2h4v1H2zm5-6h2v1H7zm3 0h2v1h-2zM7 8h2v1H7zm3 0h2v1h-2zm-3 2h2v1H7zm3 0h2v1h-2zm-3 2h2v1H7zm3 0h2v1h-2z"/>
 </svg>뉴스 바로가기</a></li>
